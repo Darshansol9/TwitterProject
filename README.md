@@ -79,5 +79,6 @@ Achievement:
 ----------------------------------------------------------------------------------------------------------------
 -Incorporates with any kind of Tweets with no dataloss or truncation of it : Language Compliant(All Languages tweets is processed), Emojis almost all are fetched as they were posted originally.
 -Indexes the SQL Database: Which reduces the query time to 65%.
+-Parallelism is used to scrap the tweets from each individual's timeline, thus reducing the overall processing time.
 
 
