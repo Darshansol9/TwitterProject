@@ -63,16 +63,7 @@ To Fetch the tweets:
 ---------------------------------------------------------------------------------------------------------------
 GetTweets azure func is used.
 This connects database, given the twitter_id which user wants to view the tweets, it makes a query on database and retrieve the response 
-on the browser.
-
-
-For Fetching the Tweets :
----------------------------------------------------------------------------------------------------------------
-GetTweets Azure Function is used
-http://localhost:7071/api/GetTweets?name=1356820052
-Say we want the tweets for 1356820052.
-It calls connect_database_fetch.py and make a query on the database to get the tweets.
-This tweets are treated as string object which is then send to browser back.
+on the browser.This tweets are treated as string object which is then send to browser back.
 
 Production Enviroment:
 ----------------------------------------------------------------------------------------------------------------
