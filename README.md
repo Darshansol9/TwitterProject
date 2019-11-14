@@ -1,5 +1,4 @@
 # TwitterProject
-This project is to extract large scales tweets of given twitter_id's atleast 1000 followers and query on them for certain statistics
 Given a twitter ID, get a minimum of 1000 followers and for each follower gather upto 200 tweets
 Store the tuple (twitterID,followerID,tweetID,tweet) into a table managed in Azure Sql Service.
 Create a database server with appropriate tables in that Azure account.
@@ -8,7 +7,7 @@ Manage Twitter Api Account by using developer console.
 
 Project Agenda:
 
--- given twitter ID, gather follower ids of that twitter ID
+-- given twitter ID, gather 1000 follower ids of that twitter ID
 -- for each of the follower ID gather upto 200 original tweets 
 -- exclude retweets, messages, images posting, likes it received
 
@@ -16,11 +15,10 @@ Store that into the Azure table
 Write a client to query that Azure table.
 List all tweets for a given twitter ID
 List follower ID for a given twitter ID
-
 Make the query response time faster by indexing the SQL database.
-Deploy the Rest API endpoint to use this functionality from the internet.
+Deploy the Rest API endpoint to use this functionality from the internet that can be applicable to retrieve for any twitter_id.
 
-
+In this case : Twitter_Id used is of Narendra Modi.
 
 Setup:
 -------------------------------------------------------------------
@@ -84,3 +82,11 @@ So in total 200k tweets were stored and index on SQL Server Database to make que
 https://projp1.azurewebsites.net/api/HttpTrigger?code=ZLc5L0Fp9NyLeGe3walOwrc4ZnwiHYSEubLx2J2av2EfL7ufWPxDqA==&name=18839785
 This API will fetch the tweets for given followers twitter_id
 https://projp1.azurewebsites.net/api/GetTweets?code=9eSeGOlQyRDT29ppSubu7W/zr21cTUjvS9bQCbQbWBurmaBd2VO3ag==&name=52754460
+
+
+Achievement:
+----------------------------------------------------------------------------------------------------------------
+-Incorporates with any kind of Tweets with no dataloss or truncation of it : Language Compliant(All Languages tweets is processed), Emojis almost all are fetched as they were posted originally.
+-Indexes the SQL Database: Which reduces the query time to 65%.
+
+
