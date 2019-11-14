@@ -3,21 +3,23 @@ This project is to extract large scales tweets of given twitter_id's atleast 100
 
 
 -------------------------------------------------------------------
-Contains 6 custom made python files.
+Contains 5 custom made python files.
 connect_database.py
 FetchTweetIds.py
 private.py
 Twitter_Followers.py
 Twitter_Timeline.py
+
 --------------------------------------------------------------------
 Contains 2 Azure Functions and One FunctionApp:
-ProjP1
-GetTweets
-FetchFollowers
+ProjP1 - FA
+GetTweets - AF
+FetchFollowers -AF
 
 --------------------------------------------------------------------
 Files that were generate with tweets for each individual followers and list of followers twitter id:  Followers_List.csv
 More Than 1000 files were generated and stored in Azure Database.
+
 ----------------------------------------------------------------------
 WorkFlow:
 
