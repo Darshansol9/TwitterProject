@@ -1,7 +1,28 @@
 # TwitterProject
 This project is to extract large scales tweets of given twitter_id's atleast 1000 followers and query on them for certain statistics
+Given a twitter ID, get a minimum of 1000 followers and for each follower gather upto 200 tweets
+Store the tuple (twitterID,followerID,tweetID,tweet) into a table managed in Azure Sql Service.
+Create a database server with appropriate tables in that Azure account.
+Setup the connectivity with all resources in Azure
+Manage Twitter Api Account by using developer console. 
+
+Project Agenda:
+
+-- given twitter ID, gather follower ids of that twitter ID
+-- for each of the follower ID gather upto 200 original tweets 
+-- exclude retweets, messages, images posting, likes it received
+
+Store that into the Azure table
+Write a client to query that Azure table.
+List all tweets for a given twitter ID
+List follower ID for a given twitter ID
+
+Make the query response time faster by indexing the SQL database.
+Deploy the Rest API endpoint to use this functionality from the internet.
 
 
+
+Setup:
 -------------------------------------------------------------------
 Contains 5 custom made python files.
 connect_database.py
@@ -10,18 +31,21 @@ private.py
 Twitter_Followers.py
 Twitter_Timeline.py
 
+Files
 --------------------------------------------------------------------
 Contains 2 Azure Functions and One FunctionApp:
 ProjP1 - FA
 GetTweets - AF
 FetchFollowers -AF
 
+Data
 --------------------------------------------------------------------
 Files that were generate with tweets for each individual followers and list of followers twitter id:  Followers_List.csv
 More Than 1000 files were generated and stored in Azure Database.
 
-----------------------------------------------------------------------
+
 WorkFlow:
+----------------------------------------------------------------------
 
 FetchFollowers is an azure function which returns HTTPResponse when called through the browser.
 http://localhost:7071/api/HttpTrigger?name=18839785
@@ -38,27 +62,25 @@ Once this process is done, user get the response of all tweets inserted with the
 
 
 To Fetch the tweets:
+---------------------------------------------------------------------------------------------------------------
 GetTweets azure func is used.
 This connects database, given the twitter_id which user wants to view the tweets, it makes a query on database and retrieve the response 
 on the browser.
 
 
-
--------------------------------------------------------------------------------------------------------------------------------------------
 For Fetching the Tweets :
+---------------------------------------------------------------------------------------------------------------
 GetTweets Azure Function is used
 http://localhost:7071/api/GetTweets?name=1356820052
 Say we want the tweets for 1356820052.
 It calls connect_database_fetch.py and make a query on the database to get the tweets.
 This tweets are treated as string object which is then send to browser back.
 
-----------------------------------------------------------------------------------------------------------------------------------------
-
+Production Enviroment:
+----------------------------------------------------------------------------------------------------------------
 I hosted the app in azure for getting the followers id for given twitter id in production environment:
 Used: Narendra Modi Twitter Id - to fetch atleast 1000 followers having 200 tweets atleast.
 So in total 200k tweets were stored and index on SQL Server Database to make query response time faster.
-
 https://projp1.azurewebsites.net/api/HttpTrigger?code=ZLc5L0Fp9NyLeGe3walOwrc4ZnwiHYSEubLx2J2av2EfL7ufWPxDqA==&name=18839785
-
 This API will fetch the tweets for given followers twitter_id
 https://projp1.azurewebsites.net/api/GetTweets?code=9eSeGOlQyRDT29ppSubu7W/zr21cTUjvS9bQCbQbWBurmaBd2VO3ag==&name=52754460
